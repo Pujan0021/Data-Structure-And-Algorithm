@@ -1,45 +1,74 @@
 
 import java.util.Stack;
 
-/**
- * Determines the precedednce of an operator
- *
- * @param op The operator character
- * @return An integer representing the precendence
- */
 public class infixToPostfixConversion {
 
-    private static int getPrecendence(char op) {
+    // Determines precedence of operators
+    private static int getPrecedence(char op) {
         switch (op) {
             case '+':
             case '-':
-                return 1; //Lowest precendence: Addition and Subtraction
+                return 1; // Lowest precedence
             case '*':
             case '/':
-                return 2; //Average precendence: Multiplication and Division
+                return 2; // Medium precedence
             case '^':
             case '$':
-                return 3; //Highest precendence: Exponentiation and Dollar sign
+                return 3; // Highest precedence
             default:
                 return 0;
         }
     }
 
+    // Converts infix expression to postfix
     public static String convertToPostFix(String infixExpression) {
-
-        StringBuilder postFixResult = new StringBuider();// StringBuilder is mutable so we use it so that it can be changed
+        StringBuilder postFixResult = new StringBuilder();
         Stack<Character> operatorStack = new Stack<>();
+
         for (int i = 0; i < infixExpression.length(); i++) {
             char token = infixExpression.charAt(i);
-            //char token = infixExpression[i]; is not a valid java 
 
-            // Ignore any blank spaces 
+            // Ignore spaces
             if (Character.isWhitespace(token)) {
                 continue;
             }
+
+            // Case 1: Operand → directly append
             if (Character.isLetterOrDigit(token)) {
                 postFixResult.append(token);
+            } // Case 2: Opening parenthesis → push
+            else if (token == '(') {
+                operatorStack.push(token);
+            } // Case 3: Closing parenthesis → pop until '('
+            else if (token == ')') {
+                while (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
+                    postFixResult.append(operatorStack.pop());
+                }
+                if (!operatorStack.isEmpty() && operatorStack.peek() == '(') {
+                    operatorStack.pop(); // discard '('
+                }
+            } // Case 4: Operator
+            else {
+                while (!operatorStack.isEmpty()
+                        && getPrecedence(operatorStack.peek()) >= getPrecedence(token)) {
+                    postFixResult.append(operatorStack.pop());
+                }
+                operatorStack.push(token);
             }
         }
+
+        // Pop remaining operators
+        while (!operatorStack.isEmpty()) {
+            postFixResult.append(operatorStack.pop());
+        }
+
+        return postFixResult.toString();
+    }
+
+    // Test
+    public static void main(String[] args) {
+        String infix = "A+(B*C-(D/E^F)*G)*H";
+        System.out.println("Infix: " + infix);
+        System.out.println("Postfix: " + convertToPostFix(infix));
     }
 }
