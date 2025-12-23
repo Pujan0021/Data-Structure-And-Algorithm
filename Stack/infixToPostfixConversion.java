@@ -1,4 +1,5 @@
 
+import java.util.Scanner;
 import java.util.Stack;
 
 public class infixToPostfixConversion {
@@ -66,8 +67,12 @@ public class infixToPostfixConversion {
     }
 
     public static void main(String[] args) {
-        String infix = "A+(B*C-(D/E^F)*G)*H";
-        System.out.println("Infix: " + infix);
-        System.out.println("Postfix: " + convertToPostFix(infix));
+        // String infix = "A+(B*C-(D/E^F)*G)*H";
+        Scanner infixExp = new Scanner(System.in);
+        System.out.println("Enter infix Expression");
+        String infix = infixExp.nextLine();
+        String infixExpressionInUpperCase = infix.toUpperCase();
+        System.out.println("Infix: " + infixExpressionInUpperCase);
+        System.out.println("Postfix: " + convertToPostFix(infixExpressionInUpperCase));
     }
 }
