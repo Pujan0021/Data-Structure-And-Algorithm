@@ -65,7 +65,6 @@ public class infixToPostfixConversion {
         return postFixResult.toString();
     }
 
-    // Test
     public static void main(String[] args) {
         String infix = "A+(B*C-(D/E^F)*G)*H";
         System.out.println("Infix: " + infix);
