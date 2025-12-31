@@ -22,6 +22,7 @@ public class LinearQueue {
         } else {
             return false;
         }
+
     }
 
     /**
@@ -44,6 +45,9 @@ public class LinearQueue {
         System.out.println("Data SuccessFully enqueued. The inserted item is: " + Data);
     }
 
+    /**
+     * Dequeue Operation; --> Logic: if(isEmpty()) write underflow
+     */
     public static void dequeue() {
         int Data;
         if (isEmpty()) {
@@ -60,11 +64,25 @@ public class LinearQueue {
         }
         System.out.println("The dequeued data is " + Data);
     }
+    // Display the elements of Queue
+
+    public static void Display() {
+        if (!isEmpty()) {
+            System.err.println("Elements of Queue:");
+            for (int i = F; i <= R; i++) {
+                System.out.println(queue[i]);
+            }
+        } else {
+            System.err.println("No items in Queue");
+        }
+
+    }
 
     public static void main(String[] args) {
         enqueue(10);
         enqueue(20);
         enqueue(30);
         dequeue();
+        Display();
     }
 }
