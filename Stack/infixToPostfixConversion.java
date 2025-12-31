@@ -74,5 +74,6 @@ public class infixToPostfixConversion {
         String infixExpressionInUpperCase = infix.toUpperCase();
         System.out.println("Infix: " + infixExpressionInUpperCase);
         System.out.println("Postfix: " + convertToPostFix(infixExpressionInUpperCase));
+        infixExp.close();
     }
 }
