@@ -1,4 +1,6 @@
 
+import java.util.Scanner;
+
 public class LinearQueue {
 
     static int N = 10; //Max Size of Queue
@@ -66,23 +68,51 @@ public class LinearQueue {
     }
     // Display the elements of Queue
 
-    public static void Display() {
-        if (!isEmpty()) {
-            System.err.println("Elements of Queue:");
-            for (int i = F; i <= R; i++) {
-                System.out.println(queue[i]);
+    // public static void Display() {
+    //     if (!isEmpty()) {
+    //         System.err.println("Elements of Queue:");
+    //         for (int i = F; i <= R; i++) {
+    //             System.out.println(queue[i]);
+    //         }
+    //     } else {
+    //         System.err.println("No items in Queue");
+    //     }
+    // }
+    public static void main(String[] args) {
+        System.out.println("====================Choice===================");
+        System.out.println("1: Is Empty?");
+        System.out.println("2: Is Full?");
+        System.out.println("3: Enqueue");
+        System.out.println("4: Dequeue");
+        System.out.println("5: Exit");
+        Scanner sc = new Scanner(System.in);
+        int userInput = sc.nextInt();
+
+        while (true) {
+            switch (userInput) {
+                case 1:
+                    System.out.println(isEmpty());
+                    return;
+                case 2:
+                    System.out.println(isFull());
+                    return;
+
+                case 3:
+                    int data = 50;
+                    enqueue(data);
+                    System.out.println("The data inserted is " + data);
+                    return;
+                case 4:
+                    dequeue();
+                    return;
+                case 5:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Not a vaalid Input");
             }
-        } else {
-            System.err.println("No items in Queue");
+            sc.close();
         }
 
-    }
-
-    public static void main(String[] args) {
-        enqueue(10);
-        enqueue(20);
-        enqueue(30);
-        dequeue();
-        Display();
     }
 }
