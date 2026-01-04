@@ -68,23 +68,25 @@ public class LinearQueue {
     }
     // Display the elements of Queue
 
-    // public static void Display() {
-    //     if (!isEmpty()) {
-    //         System.err.println("Elements of Queue:");
-    //         for (int i = F; i <= R; i++) {
-    //             System.out.println(queue[i]);
-    //         }
-    //     } else {
-    //         System.err.println("No items in Queue");
-    //     }
-    // }
+    public static void Display() {
+        if (!isEmpty()) {
+            System.err.println("Elements of Queue:");
+            for (int i = F; i <= R; i++) {
+                System.out.println(queue[i]);
+            }
+        } else {
+            System.err.println("No items in Queue");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("====================Choice===================");
         System.out.println("1: Is Empty?");
         System.out.println("2: Is Full?");
         System.out.println("3: Enqueue");
         System.out.println("4: Dequeue");
-        System.out.println("5: Exit");
+        System.out.println("5: Display");
+        System.out.println("6: Exit");
         Scanner sc = new Scanner(System.in);
         int userInput = sc.nextInt();
 
@@ -106,6 +108,9 @@ public class LinearQueue {
                     dequeue();
                     return;
                 case 5:
+                    Display();
+                    return;
+                case 6:
                     System.exit(0);
                     break;
                 default:
