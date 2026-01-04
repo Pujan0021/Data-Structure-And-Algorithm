@@ -76,12 +76,21 @@ public class stackOperation {
             System.out.println("8. --------Exit----------");
             int choice = sc.nextInt();
             switch (choice) {
-                case 1 ->
+                case 1 -> {
+
                     System.out.println("Stack Empty: " + isEmpty());
-                case 2 ->
+                    break;
+                }
+                case 2 -> {
+
                     System.out.println("Stack Full: " + isFull());
-                case 3 ->
+                    break;
+                }
+                case 3 -> {
+
                     System.out.println("Stack Size: " + stackSize());
+                    break;
+                }
                 case 4 -> {
 
                     System.out.println("Enter a number: ");
@@ -91,23 +100,29 @@ public class stackOperation {
                 }
                 case 5 -> {
                     System.out.println("Pop Operation Executed : " + pop());
+                    break;
                 }
                 case 6 -> {
                     System.out.println("Peek Operation Executed : " + peek());
+                    break;
 
                 }
                 case 7 -> {
                     System.out.println("Display");
                     display();
+                    break;
 
                 }
                 case 8 -> {
                     System.out.println("Thank you, Exiting......");
-                    sc.close();
-                    return;
+                    System.exit(0);
+                    break;
                 }
-                default ->
+                default -> {
+
                     System.out.println(".................Invalid Choice!..........");
+                    break;
+                }
             }
         }
 
