@@ -32,7 +32,7 @@ public class LinkedListImplementation {
         Node newNode = new Node(element);
         if (head == null) {
             head = newNode;
-            System.out.println("Element inserted at the last: " + element);
+            System.out.println("Element inserted at last: " + element);
             return;
         }
         Node temp = head;
@@ -40,7 +40,7 @@ public class LinkedListImplementation {
             temp = temp.next;
         }
         temp.next = newNode;
-        System.out.println("Element inserted at the last: " + element);
+        System.out.println("Element inserted at last: " + element);
     }
 
     //3. Traverse
@@ -58,6 +58,23 @@ public class LinkedListImplementation {
             temp = temp.next;
         }
 
+    }
+
+    //4. Size
+    int count;
+
+    public void size() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            count++;
+        }
+
+        System.out.println("Size : " + count);
     }
 
     public static void main(String[] args) {
@@ -88,6 +105,7 @@ public class LinkedListImplementation {
                     linkedList.traverse();
                     break;
                 case 4:
+                    linkedList.size();
                     break;
                 case 5:
                     break;
