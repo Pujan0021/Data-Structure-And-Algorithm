@@ -61,13 +61,12 @@ public class LinkedListImplementation {
     }
 
     //4. Size
-    int count;
-
     public void size() {
         if (head == null) {
-            System.out.println("List is empty");
+            System.out.println("List is empty & size : 0");
             return;
         }
+        int count = 0;
         Node temp = head;
         while (temp != null) {
             temp = temp.next;
